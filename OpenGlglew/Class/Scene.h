@@ -13,7 +13,7 @@ class Scene
 public:
 	GLint shaderProgram;
 	unsigned int VBO, VAO, EBO;
-	unsigned int texture;
+	unsigned int texture1, texture2;
 public:
 	Scene();
 	virtual ~Scene();
