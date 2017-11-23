@@ -38,6 +38,7 @@ void processInput(GLFWwindow *window)
 		//将窗口设置为关闭，跳出循环  
 		glfwSetWindowShouldClose(window, true);
 	}
+	 
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
@@ -189,24 +190,23 @@ int main()
 	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	//glEnableVertexAttribArray(0);
 
-
 	Scene mScene = Scene::Scene();
-	mScene.CreateShader();
+	mScene.CreateModel();
 	// 使用循环达到循环渲染效果  
 	while (!glfwWindowShouldClose(window))
 	{
 		//自定义输入事件  
 		processInput(window);
-
-		mScene.Draw();		
-
+		mScene.WindowInput(window);
+		mScene.DrawModel();		
+		
 	//	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		//交互缓冲区，否则显示空白  
 		glfwSwapBuffers(window);
 		//输入输出事件,否则无法对窗口进行交互  
 		glfwPollEvents();
 	}
-	mScene.DeleteShader();
+	mScene.DeleteModel();
 	//终止渲染 关闭并清理glfw本地资源  
 	glfwTerminate();
 	return 0;
